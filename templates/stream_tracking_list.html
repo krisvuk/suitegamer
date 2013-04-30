@@ -1,0 +1,57 @@
+<html>
+
+<head>
+	<base target="_parent">
+	<link type="text/css" rel="stylesheet" href="/static/main.css" />
+</head>
+
+<body>
+<div id="stream_list_container">
+
+{% for stream_tmp in streams %}
+{% set x = x + 1 %}
+{% if x < 7 %}
+<div id="test">
+<div class="stream_link_one">
+<a href="/stream_one/{{stream_tmp.stream_title}}"><div class="stream_tracking_button"> <div class="{% if stream_tmp.check_if_live_twitch(stream_tmp.stream_name) == 'Live' %}live{% elif stream_tmp.check_if_live_own3d(stream_tmp.stream_url) == 'Live' %}live{% else %}offline{% endif %}"><center>
+
+{% if stream_tmp.stream_type(stream_tmp.stream_url) == "Twitch.tv" %}
+
+{{stream_tmp.check_if_live_twitch(stream_tmp.stream_name)}}
+
+{% else %}
+{{stream_tmp.check_if_live_own3d(stream_tmp.stream_url)}}
+{% endif %}  
+
+
+</center></div> <div class="stream_button_contents">{{stream_tmp.stream_title}}</div></div></a>
+</div>
+</div>
+
+{% else %}
+
+<div id="test">
+<div class="stream_link_{{x}}">
+<a href="/stream_one/{{stream_tmp.stream_title}}"><div class="stream_tracking_button"> <div class="{% if stream_tmp.check_if_live_twitch(stream_tmp.stream_name) == 'Live' %}live{% elif stream_tmp.check_if_live_own3d(stream_tmp.stream_url) == 'Live' %}live{% else %}offline{% endif %}"><center>
+
+{% if stream_tmp.stream_type(stream_tmp.stream_url) == "Twitch.tv" %}
+
+{{stream_tmp.check_if_live_twitch(stream_tmp.stream_name)}}
+
+{% else %}
+{{stream_tmp.check_if_live_own3d(stream_tmp.stream_url)}}
+{% endif %}  
+
+
+</center></div> <div class="stream_button_contents">{{stream_tmp.stream_title}}</div></div></a>
+</div>
+</div>
+
+{% endif %}
+{%  endfor %}
+
+</div>
+</body>
+
+
+</html>

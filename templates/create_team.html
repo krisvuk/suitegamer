@@ -1,0 +1,117 @@
+<html>
+
+<head>
+		<link type="text/css" rel="stylesheet" href="/static/main.css" />
+</head>
+
+<body>
+
+<div id="wrapper">
+<div class="banner">
+	<a href="/"><div class="logo"></div></a>
+	{% if username %}
+	<div id="user_info_top_right">
+	<a href="/profile">{{firstname}} {{lastname}}</a><br>
+	<a href="/dashboard/{{username}}">My Dashboard</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/logout">Logout</a>
+	</div><!--user_info_top_right-->
+	{% else %}
+	<a href="/login"><div class="login_button"></div></a>
+	<a href="/register"><div class="register_button"></div></a>
+	{% endif %}
+{% if username %}
+<div class="banner">
+	<a href="/"><div class="logo"></div></a>
+	{% if username %}
+	<div id="user_info_top_right">
+	<a href="/profile/{{username}}">{{firstname}} {{lastname}}</a><br>
+	<a href="/dashboard/{{username}}">My Dashboard</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/logout">Logout</a>
+	</div><!--user_info_top_right-->
+	{% else %}
+	<a href="/login"><div class="login_button"></div></a>
+	<a href="/register"><div class="register_button"></div></a>
+	{% endif %}
+<div id="top_banner">
+<div id="top_banner_profile_pic"><img src="/img/immvp.jpg" height="100px" width="100px"/><div id="top_banner_profile_pic2"></div>
+							<div id="top_banner_profile_pic3">
+							<img height="30" width="30" src="/img/im.jpg"/></div></div>
+<div id="top_banner_user_info">
+<table>
+<tr>
+<td>Username:</td><td>{% if username == 'admin'%} <font style="color: red;">{{username}}</font> {% else %} {{username}} {% endif %}</td>
+</tr>
+<tr>
+<td>Handle:</td> <td><font style="color: orange;">Ishmael</font></td>
+</tr>
+<tr>
+{% if team_name %}
+<td>Team: </td><td><a href="/team_name/{{team_name}}">{{team_name}}</a></td>
+{% else %}
+<td>Team: </td><td><a href="#">*Free Agent*</a></td>
+{% endif %}
+</tr>
+</table>
+</div><!--End of the top_banner_user_info-->
+ </div>
+</div><!--End of the Banner-->
+{% else %}
+{% endif %}	
+</div><!--End of the Banner-->
+<div id="center_create_team">
+<div id="create_team_box">
+
+<div id="create_team_form">
+
+<form method="post">
+<table>
+<tr><td><font style="color:white;">Choose a Team Name:</font></td><td><input size="25" type="text" name="team_name"></td><td><input type="submit" value="Create Team"></td></tr>
+<div style="position: absolute; top: 30px; left: 2px; color:red;">{{error_team_name}} </div>
+</form>
+
+</table>
+</div>
+
+<div style="position: absolute; top: 90px;">
+{% if team_name %}
+<h3>*Important* please read:</h3><br>
+{{firstname}}, you are already a member of <u>{{team_name}}</u>. As the founder, you have the right to delete it. It is important to understand that creating a new team will delete <u>{{team_name}}</u> from our database and will relinquish any and all rights you have to the team name on our network. Please proceed with caution.
+{% else %}
+<h3>*Important* please read:</h3>
+Hello {{firstname}}. Through this page, you may found a team. Please note that *established* teams have their names held for their use alone. In addition, it is possible that the team name you are attempting to use
+may already by in use. If it is, and you were *well* established before hand, please contact the admin <a href="#"><font style="blue: red">here</font></a>. Otherwise, if the name has been claimed, we cannot grant you access to it. If the name is
+free, you become the leader and claim the name as your own. Thus you will be entitled to it on SuiteGamer<font size="2">&trade;</font> until you, yourself decide to delete it or found another team in its stead.
+{% endif %}
+</div>
+
+</div>
+</div><!--End of the Center Index-->
+<div id="footer">
+<center>
+<table>
+<tr>
+<td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Terms of Use</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">FAQ</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Privacy Policy</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Register</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+</table>
+
+</center>
+<br><br>
+<center><font size="3" style="color: white;">Copyright &#169; 2012. SuiteGamer.com. All rights reserved. </font></center>
+</div><!--End of the Footer-->
+</div><!--End of the Wrapper-->
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link type="text/css" rel="stylesheet" href="/static/main.css" />
+		<base target="_parent" />
+
+</head>
+
+
+
+<body style="background-color: black; color: white; z-index:1000; width: 995px;">
+<div style="background-color: black;">
+
+
+<div style="position: relative; top: 2px; "><img src="/img/table_headers.png"/></div>
+
+{% for stream_tmp in tracking_streams %}
+
+<div id="test">
+<a href="/stream_one/{{stream_tmp.stream_title}}" title="{{stream_tmp.stream_url}}"><div id="my_streams_button">
+<div style="position:absolute; color: white; padding-top: 4px; left:30px;">{{stream_tmp.stream_title}}</div><div style="position: absolute;  overflow: hidden; color: white; padding-top: 4px; left: 200px;">{{ stream_tmp.stream_url|truncate(40,"...") }}</div><div style="position: absolute; color: white;  padding-top: 4px; left: 530px;">{{stream_tmp.tracking_value}}</div><div style="position: absolute; color: white;  padding-top: 4px; left: 710px;">{{stream_tmp.stream_type(stream_tmp.stream_url)}}</div><div style="position: absolute; color: white;  padding-top: 4px; left: 800px;"><form name="untracking_form" method="post"><button disabled="disabled">Track</button><div style="position: relative; color: blue;  top: -24px; left: 60px;"><button name="untrack" value="{{stream_tmp.key().id()}}">Untrack</button><input name="url" type="hidden" value="{{stream_tmp.stream_url}}"/></div></form></div><div class="stream_delete_button"><form method="post"><button name="delete_tracked" value="{{stream_tmp.key().id()}}">Delete</button></form></div><br>
+</div></a>
+</div>
+
+
+{%  endfor %}
+
+{% for stream_tmp in streams %}
+
+<div id="test">
+<a href="/stream_one/{{stream_tmp.stream_title}}" title="{{stream_tmp.stream_url}}"><div id="my_streams_button">
+<div style="position:absolute; color: white;  padding-top: 4px; left:30px;">{{stream_tmp.stream_title}}</div><div style="position: absolute; overflow: hidden;  color: white; padding-top: 4px; left: 200px;">{{ stream_tmp.stream_url|truncate(40,"...") }}</div><div style="position: absolute; color: white;  padding-top: 4px; left: 530px;">{{stream_tmp.tracking_value}}</div><div style="position: absolute; color: white;  padding-top: 4px; left: 710px;">{{stream_tmp.stream_type(stream_tmp.stream_url)}}</div><div style="position: absolute; padding-top: 4px; left: 800px;"><form name="tracking_form" method="post"><button name="track" value="{{stream_tmp.key().id()}}">Track</button><div style="position: relative; top: -24px; left: 60px;"><button disabled="disabled">Untrack</button><input name="url2" type="hidden" value="{{stream_tmp.stream_url}}"/></div></form></div><div class="stream_delete_button"><form method="post"><button name="delete_untracked" value="{{stream_tmp.key().id()}}">Delete</button></form></div><br>
+</div></a>
+</div>
+
+
+	
+{%  endfor %}
+
+
+
+
+
+</div>
+</body>
+
+
+</html> 

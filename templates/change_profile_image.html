@@ -1,0 +1,111 @@
+<html>
+
+<head>
+		<link type="text/css" rel="stylesheet" href="/static/main.css" />
+</head>
+
+<body>
+
+<div id="wrapper">
+<div class="banner">
+	<a href="/"><div class="logo"></div></a>
+	{% if username %}
+	<div id="user_info_top_right">
+	<a href="/profile">{{firstname}} {{lastname}}</a><br>
+	<a href="/dashboard/{{username}}">My Dashboard</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/logout">Logout</a>
+	</div><!--user_info_top_right-->
+	{% else %}
+	<a href="/login"><div class="login_button"></div></a>
+	<a href="/register"><div class="register_button"></div></a>
+	{% endif %}
+{% if username %}
+<div class="banner">
+	<a href="/"><div class="logo"></div></a>
+	{% if username %}
+	<div id="user_info_top_right">
+	<a href="/profile/{{username}}">{{firstname}} {{lastname}}</a><br>
+	<a href="/dashboard/{{username}}">My Dashboard</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/logout">Logout</a>
+	</div><!--user_info_top_right-->
+	{% else %}
+	<a href="/login"><div class="login_button"></div></a>
+	<a href="/register"><div class="register_button"></div></a>
+	{% endif %}
+<div id="top_banner">
+<div style="position: absolute; left: 1080px; top: 80px;">
+<iframe src="http://free.timeanddate.com/clock/i3ecxqqm/fn7/fs13/fcfff/tc000/pc000/ftb/th2/ta1" frameborder="0" width="120" height="21"></iframe>
+</div>
+<div id="top_banner_profile_pic"><img src="/img/immvp.jpg" height="100px" width="100px"/><div id="top_banner_profile_pic2"></div>
+							<div id="top_banner_profile_pic3">
+							<img height="30" width="30" src="/img/im.jpg"/></div></div>
+<div id="top_banner_user_info">
+<table>
+<tr>
+<td>Username:</td><td>{% if username == 'admin'%} <font style="color: red;">{{username}}</font> {% else %} {{username}} {% endif %}</td>
+</tr>
+<tr>
+<td>Handle:</td> <td>(no handle)</td>
+</tr>
+<tr>
+{% if team_name %}
+<td>Team: </td><td><a href="/team_name/{{team_name}}">{{team_name}}</a></td>
+{% else %}
+<td>Team: </td><td><a href="#">*Free Agent*</a></td>
+{% endif %}
+</tr>
+</table>
+</div><!--End of the top_banner_user_info-->
+ </div>
+</div><!--End of the Banner-->
+{% else %}
+{% endif %}	
+</div><!--End of the Banner-->
+<div id="center_change_profile_image">
+
+<div id="change_profile_image_box">
+<div style="position: absolute; left: 100px; top: 20px;">
+{% if profile_image %}
+<img src="/img?entity_id={{profile_image}}" width="198" height="198"/>
+{% else %}
+<img src="/img/profile_pic_cover.png" width="198" height="198"/>
+{% endif %}
+</div>
+<div style="position: absolute; top: 240px; left: 40px;">
+<form enctype="multipart/form-data" method="post">
+	<input type="file" name="img">
+	<input type="submit" value="Upload Image">
+</form>
+</div>
+</div>
+
+</div><!--End of the Center Index-->
+<div id="footer">
+<center>
+<table>
+<tr>
+<td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Terms of Use</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">FAQ</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Privacy Policy</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Register</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+</table>
+
+</center>
+<br><br>
+<center><font size="3" style="color: white;">Copyright &#169; 2012. SuiteGamer.com. All rights reserved. </font></center>
+</div><!--End of the Footer-->
+</div><!--End of the Wrapper-->
+</body>
+
+</html>

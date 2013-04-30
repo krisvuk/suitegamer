@@ -1,0 +1,242 @@
+<html>
+
+<head>
+		<link type="text/css" rel="stylesheet" href="/static/main.css" />
+		
+		<script type="text/javascript">
+		function check() {
+		if(document.getElementById('game1').value != "")
+		document.getElementById('game2').disabled = false;
+		else
+		document.getElementById('game2').disabled = true;
+}
+</script>
+</head>
+
+<body>
+
+<div id="wrapper">
+<div class="banner">
+	<a href="/"><div class="logo"></div></a>
+	{% if username %}
+	<div id="user_info_top_right">
+	<a href="/profile/{{username}}">{{firstname}} {{lastname}}</a><br>
+	<a href="/dashboard/{{username}}">My Dashboard</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/logout">Logout</a>
+	</div><!--user_info_top_right-->
+	{% else %}
+	<a href="/login"><div class="login_button"></div></a>
+	<a href="/register"><div class="register_button"></div></a>
+	{% endif %}
+<div id="top_banner">
+<div style="position: absolute; left: 1080px; top: 80px;">
+<iframe src="http://free.timeanddate.com/clock/i3ecxqqm/fn7/fs13/fcfff/tc000/pc000/ftb/th2/ta1" frameborder="0" width="120" height="21"></iframe>
+</div>
+<div id="top_banner_profile_pic"><img src="/img/immvp.jpg" height="100px" width="100px"/><div id="top_banner_profile_pic2"></div>
+							<div id="top_banner_profile_pic3">
+							<img height="30" width="30" src="/img/im.jpg"/></div></div>
+<div id="top_banner_user_info">
+<table>
+<tr>
+<td>Username:</td><td>{% if username == 'admin'%} <font style="color: red;">{{username}}</font> {% else %} {{username}} {% endif %}</td>
+</tr>
+<tr>
+<td>Handle:</td> <td>(no handle)</td>
+</tr>
+<tr>
+<td>Team: </td><td><a href="#">Incredible Miracle</a></td>
+</tr>
+</table>
+</div><!--End of the top_banner_user_info-->
+<div id="banner_top_alerts">
+<table>
+<tr>
+<td><div style="position: absolute; top:15px; left: -18px;"><img src="/img/mail_icon.png"/></div><font style="color: #000066;"> &nbsp;Inbox:</font></td><td>no messeges (coming soon!)</td>
+</tr>
+<tr>
+<td><div style="position: absolute; top:35px; left: -20px;"><img src="/img/alert_button.png"/></div>&nbsp;<font style="color: yellow;"> Alert:</font></td> <td><font style="color: #00cc00;">Friend request.</font></td>
+</tr>
+<tr>
+<td><div style="position: absolute; top:60px; left: -20px;"><img src="/img/alert_button.png"/></div>&nbsp;<font style="color: yellow;"> Alert:</font></td> <td><font style="color: #00cc00;">Team Request.</font></td>
+</tr>
+</table>
+</div><!--banner_top_alerts-->
+<div id="edit_broadcast"><a href="/edit_broadcast">Edit Your Broadcast</a></div>
+<div id="edit_user_info"><a href="/edit_user_info">Edit Information</a></div>
+</div><!--End of the top_banner-->
+</div><!--End of the Banner-->
+<div id="center_profile">
+
+<div id="profile_top_container">
+<div id="profile_picture"><img height="198" width="198" src="/img/immvp.jpg"/><div id="profile_pic1"><div id="profile_pic3"></div>
+							<div id="profile_pic2">
+							<img height="60" width="60" src="/img/im.jpg"/></div></div></div>
+<div id="profile_info">
+<div id="user_info">
+<table>
+<tr>
+<td>Username:</td><td>{% if username == 'admin'%} <font style="color: red;">{{username}}</font> {% else %} {{username}} {% endif %}</td>
+</tr>
+<tr>
+<td>Name:</td> <td>{{firstname}} {{lastname}}</td>
+</tr>
+<tr>
+<td>Handle:</td> <td>(no handle)</td>
+</tr>
+<tr>
+<td>Birthday: </td><td>{{month}} {{day}}, {{year}}</td>
+</tr>
+<tr>
+<td>Country: </td><td>{{country}}</td>
+</tr>
+<tr>
+{% if team_name %}
+<td>Team: </td><td><a href="/team_name/{{team_name}}">{{team_name}}</a></td>
+{% else %}
+<td>Team: </td><td><a href="#">*Free Agent*</a></td>
+{% endif %}
+</tr>
+<tr>
+<td>Player Rank: </td><td><div><img src="/img/stars/five_stars.png"/><a href="#"><font size="2">(rate player)</font></a></div></td>
+</tr>
+</table>
+</div>
+</div>
+
+<div id="user_broadcast">
+<div style=""><img src="/img/mic_icon.png"/></div>
+</div>
+<div id="change_profile_picture"><a href="/change_profile_image">Change Image</a></div>
+</div><!--End of profile_top_container-->
+
+<div id="profile_side_bar">
+<div style="position: relative; top: 10px; left: 20px;"><img src="/img/games_title.png"></div>
+<center>
+<br>
+
+<form method="post">
+<table>
+<tr>
+<td><font style="color: white;">1.</font></td>
+<td>
+<select name="game1" id="game1" onkeyup="check()">
+	<option value="">- Select a Game Title -</option>
+	<option value="Battlefield 3">Battlefield 3</option>
+	<option value="Counterstrike 1.6">Counterstrike 1.6</option>
+	<option value="Counterstrike Source">Counterstrike Source</option>
+	<option value="Diablo 2">Diablo 2</option>
+	<option value="Diablo 2 LOD">Diablo 2 LOD</option>
+	<option value="Diablo 3">Diablo 3</option>
+	<option value="Dota 2">Dota 2</option>
+	<option value="Heroes of Newerth">Heroes of Newerth</option>
+	<option value="League of Legends">League of Legends</option>
+	<option value="Starcraft BW">Starcraft BW</option>
+	<option value="Starcraft 2 WOL">Starcraft 2 WOL</option>
+	<option value="Starcraft 2 HOTS">Starcraft 2 HOTS</option>
+	<option value="Warcraft 3 ROC">Warcraft 3 ROC</option>
+	<option value="Warcraft 3 TFT">Warcraft 3 TFT</option>
+	<option value="World of Warcraft">World of Warcraft</option>
+</select>
+</td>
+</tr>
+<td><font style="color: white;">2.</font></td>
+<td>
+<select name="game2" id="game2" disabled="disabled" >
+	<option value="">- Select a Game Title -</option>
+	<option value="Battlefield 3">Battlefield 3</option>
+	<option value="Counterstrike 1.6">Counterstrike 1.6</option>
+	<option value="Counterstrike Source">Counterstrike Source</option>
+	<option value="Diablo 2">Diablo 2</option>
+	<option value="Diablo 2 LOD">Diablo 2 LOD</option>
+	<option value="Diablo 3">Diablo 3</option>
+	<option value="Dota 2">Dota 2</option>
+	<option value="Heroes of Newerth">Heroes of Newerth</option>
+	<option value="League of Legends">League of Legends</option>
+	<option value="Starcraft BW">Starcraft BW</option>
+	<option value="Starcraft 2 WOL">Starcraft 2 WOL</option>
+	<option value="Starcraft 2 HOTS">Starcraft 2 HOTS</option>
+	<option value="Warcraft 3 ROC">Warcraft 3 ROC</option>
+	<option value="Warcraft 3 TFT">Warcraft 3 TFT</option>
+	<option value="World of Warcraft">World of Warcraft</option>
+</select>
+</td>
+</tr>
+<td><font style="color: white;">3.</font></td>
+<td>
+<select name="game3" disabled="disabled">
+	<option value="">- Select a Game Title -</option>
+	<option value="Battlefield 3">Battlefield 3</option>
+	<option value="Counterstrike 1.6">Counterstrike 1.6</option>
+	<option value="Counterstrike Source">Counterstrike Source</option>
+	<option value="Diablo 2">Diablo 2</option>
+	<option value="Diablo 2 LOD">Diablo 2 LOD</option>
+	<option value="Diablo 3">Diablo 3</option>
+	<option value="Dota 2">Dota 2</option>
+	<option value="Heroes of Newerth">Heroes of Newerth</option>
+	<option value="League of Legends">League of Legends</option>
+	<option value="Starcraft BW">Starcraft BW</option>
+	<option value="Starcraft 2 WOL">Starcraft 2 WOL</option>
+	<option value="Starcraft 2 HOTS">Starcraft 2 HOTS</option>
+	<option value="Warcraft 3 ROC">Warcraft 3 ROC</option>
+	<option value="Warcraft 3 TFT">Warcraft 3 TFT</option>
+	<option value="World of Warcraft">World of Warcraft</option>
+</select>
+</td>
+</tr>
+<tr><td></td><td><input type="submit" value="Enter"></td></tr>
+</table>
+</form>
+</center>
+</div>
+
+<div id="profile_posts">
+<div id="post_form">
+<form method = "post">
+<textarea cols="70" rows="3" name="profile_post" disabled="disabled">- disabled in edit mode -</textarea>
+<input type="submit" value="Submit" disabled="disabled"/>
+</form>
+</div>
+<div id="profile_posts_area">
+{% for post_tmp in profile_posts %}
+<div id="profile_post_template">
+{{post_tmp.name_of_submitted}}
+{{post_tmp.date_created.strftime("%B %d %Y %I:%M:%S")}}
+{{post_tmp.post}}
+</div>
+{% endfor %}
+</div>
+</div>
+
+
+
+</div><!--End of the Center Index-->
+<div id="footer">
+<center>
+<table>
+<tr>
+<td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Terms of Use</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">FAQ</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Privacy Policy</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Register</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+</table>
+
+</center>
+<br><br>
+<center><font size="3" style="color: white;">Copyright &#169; 2012. SuiteGamer.com. All rights reserved. </font></center>
+</div><!--End of the Footer-->
+</div><!--End of the Wrapper-->
+</body>
+
+</html>

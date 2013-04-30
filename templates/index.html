@@ -1,0 +1,109 @@
+<html>
+
+<head>
+		<link type="text/css" rel="stylesheet" href="/static/main.css" />
+</head>
+
+<body>
+
+<div id="wrapper">
+<div class="banner">
+	<a href="/"><div class="logo"></div></a>
+	{% if username %}
+	<div id="user_info_top_right">
+	<a href="/profile">{{firstname}} {{lastname}}</a><br>
+	<a href="/dashboard/{{username}}">My Dashboard</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/logout">Logout</a>
+	</div><!--user_info_top_right-->
+	{% else %}
+	<a href="/login"><div class="login_button"></div></a>
+	<a href="/register"><div class="register_button"></div></a>
+	{% endif %}
+{% if username %}
+<div class="banner">
+	<a href="/"><div class="logo"></div></a>
+	{% if username %}
+	<div id="user_info_top_right">
+	<a href="/profile/{{username}}">{{firstname}} {{lastname}}</a><br>
+	<a href="/dashboard/{{username}}">My Dashboard</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/logout">Logout</a>
+	</div><!--user_info_top_right-->
+	{% else %}
+	<a href="/login"><div class="login_button"></div></a>
+	<a href="/register"><div class="register_button"></div></a>
+	{% endif %}
+<div id="top_banner">
+<div id="top_banner_profile_pic"><img src="/img/immvp.jpg" height="100px" width="100px"/><div id="top_banner_profile_pic2"></div>
+							<div id="top_banner_profile_pic3">
+							<img height="30" width="30" src="/img/im.jpg"/></div></div>
+<div id="top_banner_user_info">
+<table>
+<tr>
+<td>Username:</td><td>{% if username == 'admin'%} <font style="color: red;">{{username}}</font> {% else %} {{username}} {% endif %}</td>
+</tr>
+<tr>
+<td>Handle:</td> <td>(no handle)</td>
+</tr>
+<tr>
+{% if team_name %}
+<td>Team: </td><td><a href="/team_name/{{team_name}}">{{team_name}}</a></td>
+{% else %}
+<td>Team: </td><td><a href="#">*Free Agent*</a></td>
+{% endif %}
+</tr>
+</table>
+</div><!--End of the top_banner_user_info-->
+ </div>
+</div><!--End of the Banner-->
+{% else %}
+{% endif %}	
+</div><!--End of the Banner-->
+<div id="center_index">
+<div id="home">
+<div class="home_image">
+<img src="/img/what_are_you.png"/></div>
+<div style="position: absolute; left: 300px; width: 800px;">
+<center><h2><font style="color: green;"><u>Whats is SuiteGamer About?</u></font></h2></center>
+<br><p>Yes, what the hell is this indeed. Well for starters, I feel I should let everyone reading this know that I am only interested in learning whenever I persue something that isn't known to me, and web
+applications are no exception, (that is to say, I am not here to make a dollar). Programming has always been of interest to me, but always escaped me because well, I'm pretty lazy for the most part, (or so I was). 
+After deciding what the hell, I began taking some <a href="http://www.udacity.com">Udacity</a> courses (thanks to all of you there, especially <a href="http://en.wikipedia.org/wiki/Steve_Huffman">Steve Huffman</a>), as well as datamining on my own (mostly youtube videos). I got started on a project that I knew would keep my interests until I saw it in a 
+state that is maybe somewhat close to completed. This brings me to my next point, what the hell is this place?</p>
+</div>
+
+<div style="position: absolute; width: 1090px; left: 5px; top: 255px; height: auto;">
+As well as being lazy for the most part, I am also an avid gamer (ha..ha..). But even more so, I watch a TON of <a href="http://www.twitch.tv">Twitch</a> streams as well as <a href="http://www.own3d.tv">own3D</a> streams. So then whynot design an application to take both sides of the coin and - ah forget it, I'll make a video...
+Below is that video! Enjoy.<br><br>
+
+<center><iframe width="640" height="360" src="http://www.youtube.com/embed/6pA_Tou-DPI?feature=player_detailpage" frameborder="0" allowfullscreen></iframe></center>
+</div>
+</div>
+</div><!--End of the Center Index-->
+<div id="footer">
+<center>
+<table>
+<tr>
+<td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Terms of Use</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">FAQ</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Privacy Policy</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Register</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+</table>
+
+</center>
+<br><br>
+<center><font size="3" style="color: white;">Copyright &#169; 2012. SuiteGamer.com. All rights reserved. </font></center>
+</div><!--End of the Footer-->
+</div><!--End of the Wrapper-->
+</body>
+
+</html>

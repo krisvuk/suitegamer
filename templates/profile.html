@@ -1,0 +1,366 @@
+<html>
+
+<head>
+		<link type="text/css" rel="stylesheet" href="/static/main.css" />
+</head>
+
+<body>
+
+<div id="wrapper">
+<div class="banner">
+
+	<a href="/"><div class="logo"></div></a>
+	{% if username %}
+	<div id="user_info_top_right">
+	<a href="/profile/{{username}}">{{firstname}} {{lastname}}</a><br>
+	<a href="/dashboard/{{username}}">My Dashboard</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="/logout">Logout</a>
+	</div><!--user_info_top_right-->
+	{% else %}
+	<a href="/login"><div class="login_button"></div></a>
+	<a href="/register"><div class="register_button"></div></a>
+	{% endif %}
+<div id="top_banner">
+<div style="position: absolute; left: 1080px; top: 80px;">
+<iframe src="http://free.timeanddate.com/clock/i3ecxqqm/fn7/fs13/fcfff/tc000/pc000/ftb/th2/ta1" frameborder="0" width="120" height="21"></iframe>
+</div>
+<div id="top_banner_profile_pic"><img src="/img?entity_id={{profile_image}}" width="100" height="100"/><div id="top_banner_profile_pic2"></div>
+							<div id="top_banner_profile_pic3">
+							<img height="30" width="30" src="/img/im.jpg"/></div></div>
+<div id="top_banner_user_info">
+<table>
+<tr>
+<td>Username:</td><td>{% if username == 'admin'%} <font style="color: red;"><a href="/profile/{{username}}">{{username}}</a></font> {% else %} {{username}} {% endif %}</td>
+</tr>
+<tr>
+<td>Handle:</td> <td><font style="color: orange;">MC</font></td>
+</tr>
+<tr>
+{% if team_name %}
+<td>Team: </td><td><a href="/team_name/{{team_name}}">{{team_name}}</a></td>
+{% else %}
+<td>Team: </td><td><a href="#">*Free Agent*</a></td>
+{% endif %}
+</tr>
+</table>
+</div><!--End of the top_banner_user_info-->
+<div id="banner_top_alerts">
+
+</div><!--banner_top_alerts-->
+</div><!--End of the top_banner-->
+</div><!--End of the Banner-->
+<div id="center_profile">
+
+<div id="profile_top_container">
+
+<div id="profile_picture">
+{% if profile_image %}
+<img src="/img?entity_id={{profile_image}}" width="198" height="198"/>
+{% else %}
+<img src="/img/profile_pic_cover.png" width="198" height="198"/>
+{% endif %}
+		<div id="profile_pic1">							
+		<div id="profile_pic3"></div>					
+		<div id="profile_pic2">
+		<img height="60" width="60" src="/img/im.jpg"/></div></div></div>
+		
+<div id="profile_info">
+<div id="user_info">
+<table>
+<tr>
+<td>Username:</td><td>{% if username == 'admin'%} <font style="color: red;"><a href="/profile/{{profile_id}}">{{profile_id}}</a></font> {% else %} {{username}} {% endif %}</td>
+</tr>
+<tr>
+<td>Name:</td> <td>{{firstname}} {{lastname}}</td>
+</tr>
+<tr>
+<td>Handle:</td> <td><font style="color: orange;">MC</font></td>
+</tr>
+<tr>
+<td>Birthday: </td><td>{{month}} {{day}}, {{year}}</td>
+</tr>
+<tr>
+<td>Country: </td><td>{{country}}</td>
+</tr>
+<tr>
+{% if team_name %}
+<td>Team: </td><td><a href="/team_name/{{team_name}}">{{team_name}}</a></td>
+{% else %}
+<td>Team: </td><td><a href="#">*Free Agent*</a></td>
+{% endif %}
+</tr>
+<tr>
+<td>Player Rank: </td><td><div>
+{% if rating == "Not Rated" %}
+
+<font style="color:orange;">Not Rated</font>
+
+{% elif rating <= 0.5 %}
+
+<img src="/img/stars/one_half_stars.png"/>
+
+{% elif 0.5 < rating <= 1.0 %}
+
+<img src="/img/stars/one_stars.png"/>
+
+{% elif 1.0 < rating <= 1.5 %}
+
+<img src="/img/stars/one_half_stars.png"/>
+
+{% elif 1.5 < rating <= 2.0 %}
+
+<img src="/img/stars/two_stars.png"/>
+
+{% elif 2.0 < rating <= 2.5 %}
+
+<img src="/img/stars/two_half_stars.png"/>
+
+{% elif 2.5 < rating <= 3.0 %}
+
+<img src="/img/stars/three_stars.png"/>
+
+{% elif 3.0 < rating <= 3.5 %}
+
+<img src="/img/stars/three_half_stars.png"/>
+
+{% elif 3.5 < rating <= 4.0 %}
+
+<img src="/img/stars/four_stars.png"/>
+
+{% elif 4.0 < rating <= 4.5 %}
+
+<img src="/img/stars/four_half_stars.png"/>
+
+{% elif 4.5 < rating <= 5.0 %}
+
+<img src="/img/stars/five_stars.png"/>
+
+{% endif %}
+
+
+<a href="/player_rating/{{profile_id}}"><font size="2">(rate player)</font></a></div></td>
+</tr>
+</table>
+</div>
+</div>
+
+<div id="user_broadcast">
+<div style="margin-left: -6px;"><img src="/img/mic_icon.png"/></div>
+<div style="position: absolute; top: 50px;">
+{{broadcastvar}}
+</div>
+<div style="position: absolute; left: 340px; top: 175px;">
+{% if broadcasttime %}
+<font style="color: orange; position: absolute; top: 0px; width: 300px;">Time Sent: {{broadcasttime}}</font>
+{% else %}
+{% endif %}
+</div>
+</div>
+</div><!--End of profile_top_container-->
+
+{% if username == profile_id %}
+<div id="create_team_link"><a href="/create_team">Create a Team</a></div><div id="edit_profile_link"><a href="/edit_profile/{{username}}">Edit Profile</a></div>
+{% endif %}
+
+
+
+<div id="profile_side_bar">
+<div style="position: relative; top: 10px; left: 20px;"><img src="/img/games_title.png"></div>
+<br>
+<br>
+<div style=""> 
+{% if game1var == "no_game" %}
+{% else %}
+<center>
+	{% if game1var == "Battlefield 3"%}
+	<a href = "http://www.battlefield.com/battlefield3">{{game1var}}</a>
+	{% elif game1var == "Counterstrike 1.6" %}
+	<a href = "http://store.steampowered.com/css">{{game1var}}</a>
+	{% elif game1var == "Counterstrike Source" %}
+	<a href = "http://store.steampowered.com/app/240/">{{game1var}}</a>
+	{% elif game1var == "Counterstrike GO" %}
+	<a href = "http://store.steampowered.com/app/730/">{{game1var}}</a>
+	{% elif game1var == "Diablo 2" %}
+	<a href = "http://us.blizzard.com/en-us/games/d2/">{{game1var}}</a>
+	{% elif game1var == "Diablo 2 LOD" %}
+	<a href = "http://us.blizzard.com/en-us/games/d2/">{{game1var}}</a>
+	{% elif game1var == "Diablo 3" %}
+	<a href = "http://us.battle.net/d3/en/">{{game1var}}</a>
+	{% elif game1var == "Dota 2" %}
+	<a href = "http://blog.dota2.com/">{{game1var}}</a>
+	{% elif game1var == "Heroes of Newerth" %}
+	<a href = "http://www.heroesofnewerth.com">{{game1var}}</a>
+	{% elif game1var == "League of Legends" %}
+	<a href = "http://na.leagueoflegends.com/">{{game1var}}</a>
+	{% elif game1var == "Starcraft BW" %}
+	<a href = "http://us.blizzard.com/en-us/games/sc/">{{game1var}}</a>
+	{% elif game1var == "Starcraft 2 WOL" %}
+	<a href = "http://us.battle.net/sc2/en/">{{game1var}}</a>
+	{% elif game1var == "Starcraft 2 HOTS" %}
+	<a href = "http://us.battle.net/sc2/en/">{{game1var}}</a>
+	{% elif game1var == "Warcraft 3 ROC" %}
+	<a href = "http://us.blizzard.com/en-us/games/war3/">{{game1var}}</a>
+	{% elif game1var == "Warcraft 3 TFT" %}
+	<a href = "http://us.blizzard.com/en-us/games/war3/">{{game1var}}</a>
+	{% elif game1var == "World of Warcraft" %}
+	<a href = "http://us.battle.net/wow/en/">{{game1var}}</a>
+	{% endif %}
+</center>	
+	<br>
+{% if game2var == "no_game" %}
+{% else %}
+	{% if game2var == "Battlefield 3"%}
+	<a href = "http://www.battlefield.com/battlefield3">2. {{game2var}}</a>
+	{% elif game2var == "Counterstrike 1.6" %}
+	<a href = "http://store.steampowered.com/css">2. {{game2var}}</a>
+	{% elif game2var == "Counterstrike Source" %}
+	<a href = "http://store.steampowered.com/app/240/">2. {{game2var}}</a>
+	{% elif game2var == "Counterstrike GO" %}
+	<a href = "http://store.steampowered.com/app/730/">2. {{game2var}}</a>
+	{% elif game2var == "Diablo 2" %}
+	<a href = "http://us.blizzard.com/en-us/games/d2/">2. {{game2var}}</a>
+	{% elif game2var == "Diablo 2 LOD" %}
+	<a href = "http://us.blizzard.com/en-us/games/d2/">2. {{game2var}}</a>
+	{% elif game2var == "Diablo 3" %}
+	<a href = "http://us.battle.net/d3/en/">2. {{game2var}}</a>
+	{% elif game2var == "Dota 2" %}
+	<a href = "http://blog.dota2.com/">2. {{game2var}}</a>
+	{% elif game2var == "Heroes of Newerth" %}
+	<a href = "http://www.heroesofnewerth.com">2. {{game2var}}</a>
+	{% elif game2var == "League of Legends" %}
+	<a href = "http://na.leagueoflegends.com/">2. {{game2var}}</a>
+	{% elif game2var == "Starcraft BW" %}
+	<a href = "http://us.blizzard.com/en-us/games/sc/">2. {{game2var}}</a>
+	{% elif game2var == "Starcraft 2 WOL" %}
+	<a href = "http://us.battle.net/sc2/en/">2. {{game2var}}</a>
+	{% elif game2var == "Starcraft 2 HOTS" %}
+	<a href = "http://us.battle.net/sc2/en/">2. {{game2var}}</a>
+	{% elif game2var == "Warcraft 3 ROC" %}
+	<a href = "http://us.blizzard.com/en-us/games/war3/">2. {{game2var}}</a>
+	{% elif game2var == "Warcraft 3 TFT" %}
+	<a href = "http://us.blizzard.com/en-us/games/war3/">2. {{game2var}}</a>
+	{% elif game2var == "World of Warcraft" %}
+	<a href = "http://us.battle.net/wow/en/">2. {{game1var}}</a>
+	{% endif %}
+	<br>
+	{% endif %}
+
+{% endif %}
+{% if game2var == "no_game" %}
+{% else %}
+	{% if game3var == "Battlefield 3"%}
+	<a href = "http://www.battlefield.com/battlefield3">3. {{game3var}}</a>
+	{% elif game3var == "Counterstrike 1.6" %}
+	<a href = "http://store.steampowered.com/css">3. {{game3var}}</a>
+	{% elif game3var == "Counterstrike Source" %}
+	<a href = "http://store.steampowered.com/app/240/">3. {{game3var}}</a>
+	{% elif game3var == "Counterstrike GO" %}
+	<a href = "http://store.steampowered.com/app/730/">3. {{game3var}}</a>
+	{% elif game3var == "Diablo 2" %}
+	<a href = "http://us.blizzard.com/en-us/games/d2/">3. {{game3var}}</a>
+	{% elif game3var == "Diablo 2 LOD" %}
+	<a href = "http://us.blizzard.com/en-us/games/d2/">3. {{game3var}}</a>
+	{% elif game3var == "Diablo 3" %}
+	<a href = "http://us.battle.net/d3/en/">3. {{game3var}}</a>
+	{% elif game3var == "Dota 2" %}
+	<a href = "http://blog.dota2.com/">3. {{game3var}}</a>
+	{% elif game3var == "Heroes of Newerth" %}
+	<a href = "http://www.heroesofnewerth.com">3. {{game3var}}</a>
+	{% elif game3var == "League of Legends" %}
+	<a href = "http://na.leagueoflegends.com/">3. {{game3var}}</a>
+	{% elif game3var == "Starcraft BW" %}
+	<a href = "http://us.blizzard.com/en-us/games/sc/">3. {{game3var}}</a>
+	{% elif game3var == "Starcraft 2 WOL" %}
+	<a href = "http://us.battle.net/sc2/en/">3. {{game3var}}</a>
+	{% elif game3var == "Starcraft 2 HOTS" %}
+	<a href = "http://us.battle.net/sc2/en/">3. {{game3var}}</a>
+	{% elif game3var == "Warcraft 3 ROC" %}
+	<a href = "http://us.blizzard.com/en-us/games/war3/">3. {{game3var}}</a>
+	{% elif game3var == "Warcraft 3 TFT" %}
+	<a href = "http://us.blizzard.com/en-us/games/war3/">3. {{game3var}}</a>
+	{% elif game3var == "World of Warcraft" %}
+	<a href = "http://us.battle.net/wow/en/">3. {{game3var}}</a>
+	{% endif %}
+	<br>	
+{% endif %}
+</div>
+
+<div id="profile_side_bar2">
+<div style="position: relative; top: 10px; left: 20px;"><img src="/img/sites_title.png"></div>
+</div>
+
+</div>
+
+<a href="/edit_profile/{{username}}"><div id="edit_profile_button2"></div></a>
+<a href="/edit_profile/{{username}}"><div id="edit_profile_button3"></div></a>
+
+<div id="profile_posts">
+<div id="post_form">
+<form method = "post">
+<textarea cols="70" rows="3" name="profile_post"></textarea>
+<input type="submit" value="Submit"/>
+</form>
+</div>
+<div id="profile_posts_area">
+{% for post_tmp in profile_posts %}
+
+<div id="profile_post_template">
+
+<div id="profile_post_information">
+<center><a href="/profile/{{post_tmp.name_of_submitted}}">{% if post_tmp.name_of_submitted == "admin" %}<font style="color: red;">{{post_tmp.name_of_submitted}}</font></a> {% else %} {{post_tmp.name_of_submitted}}{% endif %}</center><br>
+
+<div style="position: absolute; top: 20px; width: 170px;"><center><a href="">{{post_tmp.name_of_submitted_team}}</a></center></div>
+
+{% for p_tmp in imgs2 %}
+<div style="position: absolute; top: 40px; left:20px;"><img src="/img?entity_id={{p_tmp.key()}}" width="140" height="140"/></div>
+{% endfor %}
+
+</div>
+
+
+<div id="profile_post_content">
+{{post_tmp.post.replace('\r\n', '<br>') | safe }}
+</div>
+
+<div style="margin-left: 700px;">{{post_tmp.date_created.strftime("%B %d %Y %I:%M:%S")}}</div>
+
+</div>
+{% endfor %}
+</div>
+</div>
+
+
+
+
+
+</div><!--End of the Center Index-->
+<div id="footer">
+<center>
+<table>
+<tr>
+<td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td><td><font style="color: red;">About SuiteGamer</font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Terms of Use</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">FAQ</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Privacy Policy</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+<tr>
+<td><font size="2" style="color: white;"><a href="">Register</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td><td><font size="2" style="color: white;"><a href="">Contact Us</a></font></td>
+</tr>
+</table>
+
+</center>
+<br><br>
+<center><font size="3" style="color: white;">Copyright &#169; 2012. SuiteGamer.com. All rights reserved. </font></center>
+</div><!--End of the Footer-->
+</div><!--End of the Wrapper-->
+</body>
+
+</html>
